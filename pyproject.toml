@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "ttp-monitor"
+version = "0.1.0"
+description = ""
+authors = ["Jason Walton <jwalton512@gmail.com>"]
+readme = "README.md"
+packages = [{include = "ttp_monitor"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+python-dotenv = "^1.0.0"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
