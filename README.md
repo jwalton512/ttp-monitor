@@ -16,7 +16,7 @@ Copy `.env.example` to `.env` and configure settings as applicable
 
 ## Usage
 ```
-usage: python -m ttp_monitor [options]
+usage: poetry run python -m ttp_monitor [options]
 
 Monitor schedule availability for the Trusted Traveler Program
 
