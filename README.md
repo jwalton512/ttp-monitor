@@ -21,8 +21,10 @@ usage: poetry run python -m ttp_monitor [options]
 Monitor schedule availability for the Trusted Traveler Program
 
 options:
-  -h, --help                        show this help message and exit
-  -d WATCH_DATE, --date WATCH_DATE  Search for availability on a single date
-  -l LOCATION, --loc LOCATION       Location to search for appointments
-  -t THROTTLE, --throttle THROTTLE  Number of seconds to wait between searches
+  -h, --help      show this help message and exit
+  -d WATCH_DATE, --date WATCH_DATE      Search for availability on a single date
+  -s START_DATE, --start START_DATE     Start of date range to search for availability
+  -e END_DATE, --end END_DATE           End of date range to search for availability
+  -l LOCATION, --loc LOCATION           Location to search for appointments
+  -t THROTTLE, --throttle THROTTLE      Number of seconds to wait between searches
 ```

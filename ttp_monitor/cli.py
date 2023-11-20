@@ -25,6 +25,20 @@ def main() -> None:
     )
 
     parser.add_argument(
+        "-s",
+        "--start",
+        dest="start_date",
+        help="Start of date range to search for availability",
+    )
+
+    parser.add_argument(
+        "-e",
+        "--end",
+        dest="end_date",
+        help="End of date range to search for availability",
+    )
+
+    parser.add_argument(
         "-l",
         "--loc",
         dest="location",
@@ -44,8 +58,13 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    start_date = datetime.strptime(args.watch_date, "%Y-%m-%d")
-    end_date = start_date + timedelta(days=1)
+    start_date = datetime.strptime(args.start_date or args.watch_date, "%Y-%m-%d")
+
+    end_date = (
+        datetime.strptime(args.end_date, "%Y-%m-%d")
+        if args.end_date
+        else start_date + timedelta(days=1)
+    )
 
     worker = Worker(location=args.location, start_date=start_date, end_date=end_date)
     worker.run()

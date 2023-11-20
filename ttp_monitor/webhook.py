@@ -5,10 +5,12 @@ import requests
 
 from ttp_monitor.ttp import Slot
 
+MAXIMUM_SLOTS = 20
+
 
 def notify_slots(slots: list[Slot]) -> bool:
     url = os.environ.get("NOTIFY_WEBHOOK_URL", "")
-    json = [s.to_json() for s in slots]
+    json = [s.to_json() for s in slots[:MAXIMUM_SLOTS]]
     response = requests.post(url, json=json)
     return response.ok
 
