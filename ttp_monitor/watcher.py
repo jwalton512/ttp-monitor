@@ -21,3 +21,12 @@ class Watcher:
             return True
 
         return False
+
+    def heartbeat(self) -> None:
+        webhook.heartbeat(
+            {
+                "location": self.location,
+                "start_date": str(self.start_date),
+                "end_date": str(self.end_date),
+            }
+        )
