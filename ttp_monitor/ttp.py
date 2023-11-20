@@ -1,7 +1,6 @@
 import json
 import urllib.parse
 from datetime import UTC, date, datetime
-from typing import Any
 
 import requests
 from pytz import timezone

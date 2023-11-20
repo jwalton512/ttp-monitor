@@ -1,7 +1,6 @@
 import os
 import time
 from datetime import date
-from typing import Any, Callable
 
 from ttp_monitor.watcher import Watcher
 

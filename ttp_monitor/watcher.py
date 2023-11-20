@@ -1,10 +1,7 @@
-from datetime import UTC, date, datetime
-from typing import Any
-
-from pytz import timezone, utc
+from datetime import date
 
 from ttp_monitor import webhook
-from ttp_monitor.ttp import Slot, get_location_tz, get_slots
+from ttp_monitor.ttp import get_location_tz, get_slots
 
 
 class Watcher:
