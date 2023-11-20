@@ -3,10 +3,13 @@ from typing import Any
 
 import requests
 
+from ttp_monitor.ttp import Slot
 
-def notify_slots(slots: list[dict[str, Any]]) -> bool:
+
+def notify_slots(slots: list[Slot]) -> bool:
     url = os.environ.get("NOTIFY_WEBHOOK_URL", "")
-    response = requests.post(url, json=slots)
+    json = [s.to_json() for s in slots]
+    response = requests.post(url, json=json)
     return response.ok
 
 

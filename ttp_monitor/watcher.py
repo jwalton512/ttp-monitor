@@ -1,21 +1,27 @@
-from datetime import date
+from datetime import UTC, date, datetime
 from typing import Any
 
+from pytz import timezone, utc
+
 from ttp_monitor import webhook
-from ttp_monitor.ttp import get_slots
+from ttp_monitor.ttp import Slot, get_location_tz, get_slots
 
 
 class Watcher:
     def __init__(self, location: int, start_date: date, end_date: date) -> None:
         self.location = location
+        self.location_tz = get_location_tz(location)
         self.start_date = start_date
         self.end_date = end_date
 
     def process(self) -> bool:
         slots = get_slots(
-            location=self.location, start_date=self.start_date, end_date=self.end_date
+            location=self.location,
+            start_date=self.start_date,
+            end_date=self.end_date,
+            timezone=self.location_tz,
         )
-        active = [s for s in slots if int(s["active"]) > 0]
+        active = [s for s in slots if s.is_active(use_time=True)]
         if active:
             webhook.notify_slots(active)
             return True
