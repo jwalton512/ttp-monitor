@@ -61,10 +61,9 @@ def main() -> None:
     start_date = datetime.strptime(args.start_date or args.watch_date, "%Y-%m-%d")
 
     end_date = (
-        datetime.strptime(args.end_date, "%Y-%m-%d")
-        if args.end_date
-        else start_date + timedelta(days=1)
-    )
+        datetime.strptime(args.end_date, "%Y-%m-%d") if args.end_date else start_date
+    ) + timedelta(days=1)
+    print(start_date, end_date)
 
     worker = Worker(location=args.location, start_date=start_date, end_date=end_date)
     worker.run()
